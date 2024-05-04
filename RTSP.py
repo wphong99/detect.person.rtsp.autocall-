@@ -13,9 +13,12 @@ all_devices = []
 class_list = []
 Call = False
 lock = threading.Lock()
-model = YOLO('yolov8n.pt')
+model = YOLO('yolov8n.pt', '')
 def CMD(command):
-    return subprocess.check_output('cmd.exe /c "' + command + '"', shell=True, encoding='utf-8')
+    si = subprocess.STARTUPINFO()
+    si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+    si.wShowWindow = subprocess.SW_HIDE
+    return subprocess.check_output('cmd.exe /c "' + command + '"', shell=True, encoding='utf-8', startupinfo=si)
 def CMDStart():
     CMD('adb start-server')
 def GetDevices():
