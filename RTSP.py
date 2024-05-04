@@ -13,7 +13,7 @@ all_devices = []
 class_list = []
 Call = False
 lock = threading.Lock()
-model = YOLO('yolov8n.pt', '')
+model = YOLO('yolov8n.pt')
 def CMD(command):
     si = subprocess.STARTUPINFO()
     si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
